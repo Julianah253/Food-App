@@ -28,7 +28,7 @@ export default function Checkout(){
     } = useHttp('http://localhost:3000/orders', requestConfig);
  
     const cartTotal = cartCtx.items.reduce(
-        (totalPrice, item) => totalPrice + item.quanitty * item.price,
+        (totalPrice, item) => totalPrice + item.quantity * item.price,
         0
     );
 
