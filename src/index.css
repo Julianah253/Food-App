@@ -21,6 +21,35 @@ body {
   padding: 3rem 10%;
 }
 
+@media (max-width: 768px) {
+  #main-header.is-fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #29251c;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: header-slide-down 0.25s ease-out;
+  }
+}
+
+@keyframes header-slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #main-header.is-fixed {
+    animation: none;
+  }
+}
+
 #main-header #title {
   display: flex;
   gap: 1rem;

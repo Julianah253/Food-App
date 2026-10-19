@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use('/api', express.static('public'));
 
-// 2. Moved OPTIONS check to the top of your CORS headers middleware.
+//Moved OPTIONS check to the top of your CORS headers middleware.
 // This prevents browsers from getting 404 errors during preflight requests.
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 app.get('/api/meals', async (req, res) => {
   try {
-    // 3. Use absolute paths based on the current working directory (process.cwd())
+    //  Use absolute paths based on the current working directory (process.cwd())
     // Cloud platforms like Render or Vercel alter file structures; this keeps paths exact.
     const filePath = path.join(process.cwd(), 'data', 'available-meals.json');
     const meals = await fs.readFile(filePath, 'utf8');
@@ -88,7 +88,7 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Not found' });
 });
 
-// 4. Change hardcoded 3000 to dynamically use your hosting platform's allocated port.
+// Change hardcoded 3000 to dynamically use your hosting platform's allocated port.
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
